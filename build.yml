@@ -1,0 +1,68 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [ created ]
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Download dependencies
+        run: go mod tidy
+
+      - name: Build
+        run: go build ./cmd/
+
+      - name: Vet
+        run: go vet ./...
+
+  release:
+    name: Build Release Binaries
+    if: github.event_name == 'release'
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - os: windows
+            arch: amd64
+            ext: .exe
+          - os: linux
+            arch: amd64
+            ext: ""
+          - os: darwin
+            arch: amd64
+            ext: ""
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Build binary
+        env:
+          GOOS: ${{ matrix.os }}
+          GOARCH: ${{ matrix.arch }}
+        run: |
+          go build -o release-notifier-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.ext }} ./cmd/
+
+      - name: Upload to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release-notifier-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.ext }}
