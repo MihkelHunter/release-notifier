@@ -1,0 +1,27 @@
+# Release Notifier — Recipients
+# Format: email, display name, tags (comma-separated)
+#
+# Special tag "all" → always receives every release email
+# Tags in this file are matched against tags in the markdown notes file
+# plus any always_include_tags defined per environment in config.yaml
+
+email,name,tags
+cto@yourcompany.com,CTO Office,"all"
+releases@yourcompany.com,Release Team,"all"
+
+# Finance team — gets emails tagged with "finance" or "billing"
+john.smith@yourcompany.com,John Smith,"finance,billing"
+jane.doe@yourcompany.com,Jane Doe,"finance"
+
+# Operations — gets "ops" or "infrastructure" tagged releases
+ops-team@yourcompany.com,Operations Team,"ops,infrastructure"
+bob.jones@yourcompany.com,Bob Jones,"ops"
+
+# Backend developers
+backend-dev@yourcompany.com,Backend Team,"backend"
+
+# Management — added automatically for production via always_include_tags
+management@yourcompany.com,Management,"management"
+
+# Someone who gets multiple categories
+alice.wong@yourcompany.com,Alice Wong,"finance,management,backend"

@@ -1,0 +1,38 @@
+# Release v1.4.2 — 2026-02-27
+
+tags: backend, finance, ops
+
+## Summary
+
+This release includes improvements to the invoice processing pipeline and several
+infrastructure stability fixes.
+
+## New Features
+
+- **Invoice export**: Business users can now export invoices to CSV directly from the dashboard
+- **Retry logic**: Failed payment webhooks are now retried up to 3 times with exponential backoff
+- **Audit log**: All invoice state changes are now recorded in the audit trail
+
+## Bug Fixes
+
+- Fixed a race condition in the payment processor that caused duplicate charges under high load
+- Resolved date picker rendering issue in Safari 17+
+- Corrected VAT calculation for EU customers with split invoices
+
+## Infrastructure
+
+- Upgraded PostgreSQL connection pooler (PgBouncer) from 1.21 to 1.22
+- Deployed updated Nginx config to reduce TLS handshake latency by ~40ms
+
+## Database Migrations
+
+Two non-breaking migrations were applied:
+
+- Added index on `invoices.created_at` for faster date-range queries
+- Added `retry_count` column to `payment_events` table (nullable, defaults to 0)
+
+## Notes
+
+- Deployment window: 22:00–23:00 CET. No downtime expected.
+- Rollback procedure: standard `kubectl rollout undo` — tested in staging.
+- Contact the backend team on Slack `#releases` for any questions.
