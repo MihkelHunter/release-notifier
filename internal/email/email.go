@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"strings"
 
-	"golang.org/x/oauth2"
+	// "golang.org/x/oauth2"
 	"golang.org/x/oauth2/clientcredentials"
 
 	"github.com/MihkelHunter/release-notifier/internal/config"

@@ -14,11 +14,11 @@ import (
 
 // ParsedNotes holds the extracted release notes data.
 type ParsedNotes struct {
-	Version  string
-	Date     string
-	Tags     []string
-	RawMD    string   // markdown without tag lines
-	HTML     string   // rendered HTML
+	Version string
+	Date    string
+	Tags    []string
+	RawMD   string // markdown without tag lines
+	HTML    string // rendered HTML
 }
 
 // ParseReleaseNotes reads a markdown file, extracts @tags, and renders HTML.
@@ -39,9 +39,9 @@ func ParseReleaseNotes(path string) (*ParsedNotes, error) {
 	defer f.Close()
 
 	var (
-		version     string
-		tags        []string
-		cleanLines  []string
+		version    string
+		tags       []string
+		cleanLines []string
 	)
 
 	scanner := bufio.NewScanner(f)
