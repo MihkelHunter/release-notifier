@@ -8,9 +8,9 @@ import (
 )
 
 type Config struct {
-	Azure       AzureConfig            `yaml:"azure"`
-	Sender      string                 `yaml:"sender"`        // UPN of the sending mailbox e.g. releases@company.com
-	Environments map[string]EnvConfig  `yaml:"environments"`
+	Azure        AzureConfig          `yaml:"azure"`
+	Sender       string               `yaml:"sender"` // UPN of the sending mailbox e.g. releases@company.com
+	Environments map[string]EnvConfig `yaml:"environments"`
 }
 
 type AzureConfig struct {
@@ -20,8 +20,8 @@ type AzureConfig struct {
 }
 
 type EnvConfig struct {
-	SubjectPrefix     string   `yaml:"subject_prefix"`       // e.g. "[PROD RELEASE]"
-	AlwaysIncludeTags []string `yaml:"always_include_tags"`  // tags always added for this env
+	SubjectPrefix     string   `yaml:"subject_prefix"`      // e.g. "[PROD RELEASE]"
+	AlwaysIncludeTags []string `yaml:"always_include_tags"` // tags always added for this env
 }
 
 // DefaultConfig returns a config with sensible defaults (no Azure credentials).
