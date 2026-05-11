@@ -9,7 +9,6 @@ import (
 	"net/http"
 	"strings"
 
-	// "golang.org/x/oauth2"
 	"golang.org/x/oauth2/clientcredentials"
 
 	"github.com/MihkelHunter/release-notifier/internal/config"
@@ -83,12 +82,6 @@ func renderEmailTemplate(notes *markdown.ParsedNotes, env string) (string, error
     background: #f6f8fa; border: 1px solid #e1e4e8;
     border-radius: 6px; padding: 16px; overflow-x: auto;
   }
-  .tags { margin-top: 8px; }
-  .tag {
-    display: inline-block; background: #e8f0fe; color: #1967d2;
-    border-radius: 12px; padding: 2px 10px;
-    font-size: 12px; margin-right: 4px;
-  }
   .footer {
     background: #f9f9f9; border-top: 1px solid #eee;
     padding: 16px 32px; font-size: 12px; color: #999;
@@ -100,11 +93,6 @@ func renderEmailTemplate(notes *markdown.ParsedNotes, env string) (string, error
   <div class="header">
     <h1>🚀 Release {{ .Version }}</h1>
     <div class="meta">{{ .Env }} · {{ .Date }}</div>
-    {{ if .Tags }}
-    <div class="tags" style="margin-top:10px;">
-      {{ range .Tags }}<span class="tag">{{ . }}</span>{{ end }}
-    </div>
-    {{ end }}
   </div>
   <div class="body">
     {{ .ContentHTML }}
