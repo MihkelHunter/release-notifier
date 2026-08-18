@@ -4,8 +4,7 @@ release-notifier.exe
 
 # Config with real credentials — never commit these
 config.yaml
-recipients.csv
-recipients - Copy.csv
+*.csv
 
 # Keep the examples
 !config.yaml.example
@@ -15,6 +14,7 @@ recipients - Copy.csv
 # Go build cache
 *.test
 *.out
+*.exe
 /vendor/
 
 # Temp PowerShell scripts generated at runtime
