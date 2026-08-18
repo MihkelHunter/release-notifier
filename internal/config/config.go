@@ -1,3 +1,4 @@
+// Package config does config things.
 package config
 
 import (
@@ -29,7 +30,7 @@ type EnvConfig struct {
 func DefaultConfig() *Config {
 	return &Config{
 		Environments: map[string]EnvConfig{
-			"production": {SubjectPrefix: "[PROD RELEASE]"},
+			"production": {SubjectPrefix: "live'i läinud AX2012 uuendused"},
 			"staging":    {SubjectPrefix: "[STAGING RELEASE]"},
 			"hotfix":     {SubjectPrefix: "🔥 [HOTFIX]"},
 		},

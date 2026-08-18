@@ -5,6 +5,7 @@ release-notifier.exe
 # Config with real credentials — never commit these
 config.yaml
 recipients.csv
+recipients - Copy.csv
 
 # Keep the examples
 !config.yaml.example

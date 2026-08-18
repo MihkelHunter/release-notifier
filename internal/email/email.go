@@ -31,7 +31,8 @@ func Build(notes *markdown.ParsedNotes, env string, cfg *config.Config, rcpts []
 		prefix = envCfg.SubjectPrefix
 	}
 
-	subject := fmt.Sprintf("%s %s — %s", prefix, notes.Version, notes.Date)
+	//subject := fmt.Sprintf("%s %s — %s", prefix, notes.Version, notes.Date)
+	subject := fmt.Sprintf("%s %s", prefix, notes.Date)
 
 	body, err := renderEmailTemplate(notes, env)
 	if err != nil {
@@ -91,15 +92,15 @@ func renderEmailTemplate(notes *markdown.ParsedNotes, env string) (string, error
 <body>
 <div class="container">
   <div class="header">
-    <h1>🚀 Release {{ .Version }}</h1>
-    <div class="meta">{{ .Env }} · {{ .Date }}</div>
-  </div>
+   <!-- <div class="meta">{{ .Env }} · {{ .Date }}</div> -->
+  	<!-- <div>Uuendus {{ .Date }}</div> -->
+		</div>
   <div class="body">
     {{ .ContentHTML }}
   </div>
   <div class="footer">
-    This notification was generated automatically. Contact the dev team for questions.
-  </div>
+		Smarten Logistics AS
+	</div>
 </div>
 </body>
 </html>`
