@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"os"
 	"strings"
 
 	"github.com/MihkelHunter/release-notifier/internal/config"
@@ -29,9 +28,10 @@ func main() {
 	flag.Parse()
 
 	if *notesFile == "" {
-		fmt.Fprintln(os.Stderr, "Error: --notes flag is required")
+		/*fmt.Fprintln(os.Stderr, "Error: --notes flag is required")
 		flag.Usage()
-		os.Exit(1)
+		os.Exit(1)*/
+		*notesFile = "release-notes.md"
 	}
 
 	// Parse markdown release notes + extract tags

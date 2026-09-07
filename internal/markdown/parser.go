@@ -64,6 +64,10 @@ func ParseReleaseNotes(path string) (*ParsedNotes, error) {
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		line := scanner.Text()
+
+		// Replace template placeholders
+		line = strings.ReplaceAll(line, "{datenow}", time.Now().Format("2006-01-02"))
+
 		trimmed := strings.TrimSpace(line)
 
 		// Extract version from first H1 heading

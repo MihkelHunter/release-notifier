@@ -1,4 +1,4 @@
-# Uuendus 2026-08-18
+# Uuendus {datenow}
 
 tags: IT
 
@@ -10,6 +10,4 @@ Laupäeval läksid live’i järgmised uuendused
 
 
 ## Lisainfo
-
-- Uuenduse ajaaken: 22:00–23:00.
 - Kui muudatuste kohta on küsimusi, siis pöörduge IT osakonna poole.
