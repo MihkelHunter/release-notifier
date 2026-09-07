@@ -66,10 +66,10 @@ func main() {
 		log.Fatal("No recipients resolved. Check your tags and recipients.csv.")
 	}
 
-	fmt.Printf("📦 Release:     %s\n", parsed.Version)
-	fmt.Printf("🌍 Environment: %s\n", *env)
-	fmt.Printf("🏷️  Tags found:  %v\n", parsed.Tags)
-	fmt.Printf("📧 Recipients (%d):\n", len(recipientList))
+	fmt.Printf("Release:     %s\n", parsed.Version)
+	fmt.Printf("Environment: %s\n", *env)
+	fmt.Printf("Tags found:  %v\n", parsed.Tags)
+	fmt.Printf("Recipients (%d):\n", len(recipientList))
 	for _, r := range recipientList {
 		fmt.Printf("   - %s <%s>\n", r.Name, r.Email)
 	}
@@ -86,7 +86,7 @@ func main() {
 		fmt.Println("\n--- DRY RUN: HTML Body ---")
 		fmt.Println(msg.Body)
 		fmt.Println("--- End ---")
-		fmt.Println("\n✅ Dry run complete. No email sent.")
+		fmt.Println("\n Dry run complete. No email sent.")
 		return
 	}
 
@@ -119,9 +119,9 @@ func main() {
 		}
 
 		if *autoSend {
-			fmt.Println("📨 Sending via Outlook...")
+			fmt.Println("Sending via Outlook...")
 		} else {
-			fmt.Println("📝 Opening Outlook compose window...")
+			fmt.Println("Opening Outlook compose window...")
 		}
 
 		if err := outlook.OpenDraft(opts); err != nil {
@@ -129,18 +129,18 @@ func main() {
 		}
 
 		if *autoSend {
-			fmt.Println("✅ Email sent via Outlook!")
+			fmt.Println("Email sent via Outlook!")
 		} else {
-			fmt.Println("✅ Compose window opened — review and hit Send.")
+			fmt.Println("Compose window opened — review and hit Send.")
 		}
 		return
 	}
 
 	// ── Microsoft Graph API mode ──────────────────────────────────────────────
-	fmt.Println("📨 Sending via Microsoft Graph API...")
+	fmt.Println("Sending via Microsoft Graph API...")
 	sender := email.NewGraphSender(cfg)
 	if err := sender.Send(msg); err != nil {
 		log.Fatalf("Failed to send email: %v", err)
 	}
-	fmt.Println("✅ Release notification sent successfully!")
+	fmt.Println("Release notification sent successfully!")
 }
