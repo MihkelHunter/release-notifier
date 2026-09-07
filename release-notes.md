@@ -10,4 +10,5 @@ Laupäeval läksid live’i järgmised uuendused
 
 
 ## Lisainfo
-- Kui muudatuste kohta on küsimusi, siis pöörduge IT osakonna poole.
+
+Kui muudatuste kohta on küsimusi, siis pöörduge IT osakonna poole.

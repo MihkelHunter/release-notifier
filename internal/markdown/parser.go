@@ -31,18 +31,7 @@ type TrelloCard struct {
 	Desc string `json:"desc"`
 }
 
-// ParseReleaseNotes reads a markdown file, extracts @tags, and renders HTML.
-//
-// Tags are lines starting with "tags:" or inline @tagname tokens.
-// Example markdown:
-//
-//	# Release v1.2.3
-//	tags: backend, finance, ops
-//
-//	## New Features
-//	- Something new
 func ParseReleaseNotes(path string) (*ParsedNotes, error) {
-	// Resolve absolute path so we can find images relative to the .md file
 	absPath, err := filepath.Abs(path)
 	if err != nil {
 		return nil, fmt.Errorf("resolving notes path: %w", err)
