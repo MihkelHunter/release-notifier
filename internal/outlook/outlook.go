@@ -93,7 +93,7 @@ $htmlBody = [System.IO.File]::ReadAllText('{{.HTMLFilePath}}', [System.Text.Enco
 try {
     $outlook = New-Object -ComObject Outlook.Application
 } catch {
-    Write-Error "Could not start Outlook. Is it installed and configured?"
+    Write-Error "Could not start Outlook: $($_.Exception.Message)"
     exit 1
 }
 
